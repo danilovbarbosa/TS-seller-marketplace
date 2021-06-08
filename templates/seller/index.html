@@ -30,13 +30,13 @@
     
     {% if list_sellers %}
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Document</th>
-                <th>Phone Number</th>
-                <th>E-mail</th>
+                <th scope="col">Name</th>
+                <th scope="col">Document</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">E-mail</th>
 
             </tr>
         </thead>
@@ -49,6 +49,7 @@
                     <td>{{ seller.document }}</td>
                     <td>{{ seller.phone_number }}</td>
                     <td>{{ seller.email }}</td>
+                    <td><button type="button" class="btn btn-danger">Delete</button></td>
                 </tr>
 
             {% endfor %}
