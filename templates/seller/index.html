@@ -3,21 +3,18 @@
 
 {% block menu %}
 
-    <a class="navbar-brand" href="#">Top navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+    {% comment %} <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> {% endcomment %}
+
     <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
         <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'create' %}">Novo</a>
         </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+
     </ul>
     <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -26,8 +23,14 @@
     </div>
 
 {% endblock menu %}
+
 {% block content %}
 
-
-
+    <h2 class="mt-4">Three equal columns</h2>
+    <p>Get three equal-width columns <strong>starting at desktops and scaling to large desktops</strong>. On mobile devices, tablets and below, the columns will automatically stack.</p>
+    <div class="row mb-3">
+      <div class="col-md-4 themed-grid-col">.col-md-4</div>
+      <div class="col-md-4 themed-grid-col">.col-md-4</div>
+      <div class="col-md-4 themed-grid-col">.col-md-4</div>
+    </div>
 {% endblock content %}

@@ -4,3 +4,8 @@ from django.shortcuts import render
 def index(request):
     content = {}
     return render(request, 'seller/index.html', context=content)
+
+
+def create(request):
+    content = {}
+    return render(request, 'seller/new_seller.html', context=content)
