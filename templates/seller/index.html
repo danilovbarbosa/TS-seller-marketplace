@@ -26,11 +26,38 @@
 
 {% block content %}
 
-    <h2 class="mt-4">Three equal columns</h2>
-    <p>Get three equal-width columns <strong>starting at desktops and scaling to large desktops</strong>. On mobile devices, tablets and below, the columns will automatically stack.</p>
-    <div class="row mb-3">
-      <div class="col-md-4 themed-grid-col">.col-md-4</div>
-      <div class="col-md-4 themed-grid-col">.col-md-4</div>
-      <div class="col-md-4 themed-grid-col">.col-md-4</div>
-    </div>
+    <h2 class="mt-4">Sellers</h2>
+    
+    {% if list_sellers %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Document</th>
+                <th>Phone Number</th>
+                <th>E-mail</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for seller in  list_sellers%}
+
+                <tr>
+                    <td>{{ seller.name }}</td>
+                    <td>{{ seller.document }}</td>
+                    <td>{{ seller.phone_number }}</td>
+                    <td>{{ seller.email }}</td>
+                </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+    {% else %}
+        <p>Não há seller cadastrados no bd.</p>
+    {% endif %}
+
+
 {% endblock content %}
