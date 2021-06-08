@@ -1,8 +1,13 @@
 from django.urls import path
-from . import views
+from .views import index
+from .views import (
+    SellerCreateView
+)
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('new_seller', views.create, name='create'),
+    path('', index, name='index'),
+    # path('new_seller', views.create, name='create'),
+    path('create/', SellerCreateView.as_view(), name='create'),
+
 ]

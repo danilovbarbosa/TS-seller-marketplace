@@ -1,6 +1,15 @@
 from seller.models import Seller
 from django.shortcuts import render
 
+from django.views.generic.edit import CreateView
+
+
+class SellerCreateView(CreateView):
+    template_name = 'seller/new_seller.html'
+    model = Seller
+    fields = ['name', 'document', 'phone_number', 'email']
+
+
 # Create your views here.
 def index(request):
     list_sellers = Seller.objects.all()
