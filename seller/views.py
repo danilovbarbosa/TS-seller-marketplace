@@ -4,15 +4,15 @@ from django.views.generic.list import ListView
 
 from django.urls import reverse
 
-from seller.models import Seller
+from seller.models import Seller, Address
 
 class SellerListView(ListView):
     model = Seller
 
 
 class SellerCreateView(CreateView):
-    model = Seller
-    fields = ['name', 'document', 'phone_number', 'email']
+    model = [Seller, Address]
+    fields = ['name', 'document', 'phone_number', 'email', 'number', 'street']
     
     
     def get_success_url(self):
