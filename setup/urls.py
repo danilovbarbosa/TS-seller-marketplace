@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from seller import urls
+# from seller import urls
 
+# from marketplace import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('seller/', include('seller.urls'))
+    path('seller/', include('seller.urls')),
+    path('marketplace/', include('marketplace.urls'))
+
 ]

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Marketplace - Home{% endblock title %}
+
+{% block menu %}
+
+    <a class="navbar-brand" href="{% url 'marketplace_list' %}">Home</a>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'marketplace_create' %}">Novo</a>
+        </li>
+
+    </ul>
+    <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    </div>
+
+{% endblock menu %}
+
+{% block content %}
+
+    <h2 class="mt-4">Marketplaces</h2>
+    
+    {% if marketplace_list %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Document</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">E-mail</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for marketplace in  marketplace_list%}
+
+                <tr>
+                    <td>{{ marketplace.name }}</td>
+                    <td>{{ marketplace.document }}</td>
+                    <td>{{ marketplace.phone_number }}</td>
+                    <td>{{ marketplace.email }}</td>
+                    <td><a type="button" class="btn btn-primary" href="{% url 'marketplace_update' marketplace.id %}" >Update</a></td>
+                    <td><a type="button" class="btn btn-danger" href="{% url 'marketplace_delete' marketplace.id %}" >Delete</a></td>
+                </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+    {% else %}
+        <p>There are no marketplaces registered on the bd.</p>
+    {% endif %}
+
+
+{% endblock content %}

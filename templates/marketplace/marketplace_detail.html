@@ -1,0 +1,15 @@
+{% extends 'marketplace/marketplace_list.html' %}
+{% block title %}Marketplace - Detail{% endblock title %}
+{% block content %}
+
+<div class="col-md-7 col-lg-8">
+    <h4 class="mb-3">Detail Marketplace</h4>
+   
+    <p>{{ object.name }}</p>
+    <p>{{ object.document }}</p>
+    <p>{{ object.phone_number }}</p>
+    <p>{{ object.email }}</p>
+
+</div> 
+
+{% endblock content %}
