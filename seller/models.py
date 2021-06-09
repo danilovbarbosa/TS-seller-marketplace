@@ -25,3 +25,12 @@ class Address(models.Model):
 
     def __str__(self):
         return f"{self.street} - {self.district} - {self.number}"
+
+
+class Contact(models.Model):
+    number = models.CharField(max_length=5)
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return f"{self.number}"
