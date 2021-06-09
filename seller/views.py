@@ -1,9 +1,11 @@
-from seller.models import Seller
 from django.shortcuts import render
 
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 
+from django.urls import reverse
+
+from seller.models import Seller
 
 class SellerListView(ListView):
     model = Seller
@@ -14,3 +16,6 @@ class SellerCreateView(CreateView):
     model = Seller
     fields = ['name', 'document', 'phone_number', 'email']
     
+    
+    def get_success_url(self):
+        return reverse('list')
