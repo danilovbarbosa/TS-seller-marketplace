@@ -1,15 +1,15 @@
 {% extends 'seller/seller_list.html' %}
-{% block title %}Seller - Create{% endblock title %}
+{% block title %}Seller - Delete{% endblock title %}
 {% block content %}
 
 <div class="col-md-7 col-lg-8">
-    <h4 class="mb-3">Delete new seller</h4>
+    <h4 class="mb-3">Delete seller</h4>
    
     <form method="post">{% csrf_token %}
         
         <p>Are you sure you want to delete "{{ object }}"?</p>
         <input type="submit" value="Confirm">
-        
+
     </form>
 
 </div> 

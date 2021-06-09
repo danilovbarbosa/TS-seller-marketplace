@@ -4,9 +4,6 @@
 {% block menu %}
 
     <a class="navbar-brand" href="{% url 'list' %}">Home</a>
-    {% comment %} <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button> {% endcomment %}
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav me-auto mb-2 mb-md-0">
@@ -59,7 +56,7 @@
         </tbody>
     </table>
     {% else %}
-        <p>Não há seller cadastrados no bd.</p>
+        <p>There are no sellers registered on the bd.</p>
     {% endif %}
 
 

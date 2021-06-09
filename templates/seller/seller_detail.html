@@ -1,0 +1,15 @@
+{% extends 'seller/seller_list.html' %}
+{% block title %}Seller - Detail{% endblock title %}
+{% block content %}
+
+<div class="col-md-7 col-lg-8">
+    <h4 class="mb-3">Detail seller</h4>
+   
+    <p>{{ seller.name }}</p>
+    <p>{{ seller.document }}</p>
+    <p>{{ seller.phone_number }}</p>
+    <p>{{ seller.email }}</p>
+
+</div> 
+
+{% endblock content %}
