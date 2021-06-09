@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from django.urls.base import reverse_lazy
 
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from django.urls import reverse
@@ -13,7 +14,16 @@ class SellerListView(ListView):
 
 
 class SellerCreateView(CreateView):
-    template_name = 'seller/new_seller.html'
+    # template_name = 'seller/seller_form.html'
+    model = Seller
+    fields = ['name', 'document', 'phone_number', 'email']
+    
+    
+    def get_success_url(self):
+        return reverse('list')
+    
+
+class SellerUpdateView(UpdateView):
     model = Seller
     fields = ['name', 'document', 'phone_number', 'email']
     
@@ -30,8 +40,8 @@ class SellerDeleteView(DeleteView):
     # url to redirect after sucessfully
     # deleting object
     
-    def get_success_url(self):
-        return reverse('list')
+    success_url = reverse_lazy('list')
+
 
 class SellerDetailView(DetailView):
     
