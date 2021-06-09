@@ -16,7 +16,7 @@ class MarketplaceCreateView(CreateView):
     
     
     def get_success_url(self):
-        return reverse('list')
+        return reverse('marketplace_list')
     
 
 class MarketplaceUpdateView(UpdateView):
@@ -25,7 +25,7 @@ class MarketplaceUpdateView(UpdateView):
     
     
     def get_success_url(self):
-        return reverse('list')
+        return reverse('marketplace_list')
     
 
 class MarketplaceDeleteView(DeleteView):
@@ -33,7 +33,7 @@ class MarketplaceDeleteView(DeleteView):
     model = Marketplace
      
     def get_success_url(self):
-        return reverse('list')
+        return reverse('marketplace_list')
 
 
 class MarketplaceDetailView(DetailView):

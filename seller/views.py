@@ -11,8 +11,8 @@ class SellerListView(ListView):
 
 
 class SellerCreateView(CreateView):
-    model = [Seller, Address]
-    fields = ['name', 'document', 'phone_number', 'email', 'number']
+    model = Seller
+    fields = ['name', 'document', 'phone_number', 'email']
     
     
     def get_success_url(self):
