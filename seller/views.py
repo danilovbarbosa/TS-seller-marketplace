@@ -13,7 +13,7 @@ class SellerListView(ListView):
 
 # class SellerCreateView(CreateView):
 #     model = Seller
-#     fields = ['name', 'document', 'phone_number', 'email']
+#     fields = ['name', 'document', 'phone_number', 'email', 'address' , 'contact']
     
     
 #     def get_success_url(self):
