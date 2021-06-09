@@ -49,7 +49,7 @@
                     <td>{{ seller.document }}</td>
                     <td>{{ seller.phone_number }}</td>
                     <td>{{ seller.email }}</td>
-                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                    <td><a type="button" class="btn btn-danger" href="{% url 'delete' seller.id %}" onclick="return confirm('Are you sure you want to delete this?')">Delete</a></td>
                 </tr>
 
             {% endfor %}

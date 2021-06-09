@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from django.views.generic.edit import CreateView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.list import ListView
 
 from django.urls import reverse
@@ -19,3 +20,26 @@ class SellerCreateView(CreateView):
     
     def get_success_url(self):
         return reverse('list')
+    
+
+class SellerDeleteView(DeleteView):
+    # specify the model you want to use
+    model = Seller
+     
+    # can specify success url
+    # url to redirect after sucessfully
+    # deleting object
+    
+    def get_success_url(self):
+        return reverse('list')
+
+class SellerDetailView(DetailView):
+    
+    model = Seller
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['seller_list'] = Seller.objects.all()
+        return context
