@@ -1,3 +1,4 @@
+from seller.forms import SellerForm, AddressForm
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
@@ -10,14 +11,22 @@ class SellerListView(ListView):
     model = Seller
 
 
+# class SellerCreateView(CreateView):
+#     model = Seller
+#     fields = ['name', 'document', 'phone_number', 'email']
+    
+    
+#     def get_success_url(self):
+#         return reverse('seller_list')
+
+
 class SellerCreateView(CreateView):
-    model = Seller
-    fields = ['name', 'document', 'phone_number', 'email']
+    form_class = SellerForm
+    template_name = 'seller/seller_form.html'
     
     
     def get_success_url(self):
-        return reverse('list')
-    
+        return reverse('seller_list')
 
 class SellerUpdateView(UpdateView):
     model = Seller
@@ -25,7 +34,7 @@ class SellerUpdateView(UpdateView):
     
     
     def get_success_url(self):
-        return reverse('list')
+        return reverse('seller_list')
     
 
 class SellerDeleteView(DeleteView):
@@ -33,7 +42,7 @@ class SellerDeleteView(DeleteView):
     model = Seller
      
     def get_success_url(self):
-        return reverse('list')
+        return reverse('seller_list')
 
 
 class SellerDetailView(DetailView):

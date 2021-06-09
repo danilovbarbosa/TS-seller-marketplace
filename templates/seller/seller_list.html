@@ -3,13 +3,13 @@
 
 {% block menu %}
 
-    <a class="navbar-brand" href="{% url 'list' %}">Home</a>
+    <a class="navbar-brand" href="{% url 'seller_list' %}">Home</a>
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav me-auto mb-2 mb-md-0">
 
         <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{% url 'create' %}">Novo</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'seller_create' %}">Novo</a>
         </li>
 
     </ul>
@@ -47,8 +47,11 @@
                     <td>{{ seller.document }}</td>
                     <td>{{ seller.phone_number }}</td>
                     <td>{{ seller.email }}</td>
-                    <td><a type="button" class="btn btn-primary" href="{% url 'update' seller.id %}" >Update</a></td>
-                    <td><a type="button" class="btn btn-danger" href="{% url 'delete' seller.id %}" >Delete</a></td>
+                    <td>{{ seller.addresses }}</td>
+                    <td>{{ seller.contacts }}</td>
+
+                    <td><a type="button" class="btn btn-primary" href="{% url 'seller_update' seller.id %}" >Update</a></td>
+                    <td><a type="button" class="btn btn-danger" href="{% url 'seller_delete' seller.id %}" >Delete</a></td>
                 </tr>
 
             {% endfor %}
