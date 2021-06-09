@@ -36,11 +36,8 @@ class SellerDeleteView(DeleteView):
     # specify the model you want to use
     model = Seller
      
-    # can specify success url
-    # url to redirect after sucessfully
-    # deleting object
-    
-    success_url = reverse_lazy('list')
+    def get_success_url(self):
+        return reverse('list')
 
 
 class SellerDetailView(DetailView):
