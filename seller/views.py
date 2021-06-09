@@ -5,13 +5,11 @@ from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 
 
-class SellerList(ListView):
-    # template_name = 'seller/new_seller.html'
+class SellerListView(ListView):
     model = Seller
-    # fields = ['name', 'document', 'phone_number', 'email']
-    
-    # def form_valid(self):
-    #     return super().form_valid(form)
+    # queryset = Seller.objects.all()
+    # context_object_name = 'seller_list'
+
 
 class SellerCreateView(CreateView):
     template_name = 'seller/new_seller.html'

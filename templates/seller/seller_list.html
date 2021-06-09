@@ -28,7 +28,7 @@
 
     <h2 class="mt-4">Sellers</h2>
     
-    {% if list_sellers %}
+    {% if seller_list %}
 
     <table class="table">
         <thead>
@@ -42,7 +42,7 @@
         </thead>
         <tbody>
 
-            {% for seller in  list_sellers%}
+            {% for seller in  seller_list%}
 
                 <tr>
                     <td>{{ seller.name }}</td>
