@@ -21,7 +21,13 @@ class Address(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=10)
-    seller = models.ForeignKey(Seller, on_delete=models.CASCADE, related_name='addresses', null=True, blank=True)
+    seller = models.ForeignKey(
+        Seller,
+        on_delete=models.CASCADE,
+        related_name="addresses",
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return f"{self.street} - {self.district} - {self.number}"
@@ -30,7 +36,9 @@ class Address(models.Model):
 class Contact(models.Model):
 
     number = models.CharField(max_length=5)
-    seller = models.ForeignKey(Seller, on_delete=models.CASCADE, related_name='contacts', null=True, blank=True)
+    seller = models.ForeignKey(
+        Seller, on_delete=models.CASCADE, related_name="contacts", null=True, blank=True
+    )
 
     def __str__(self):
         return f"{self.number}"

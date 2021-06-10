@@ -21,9 +21,8 @@ from django.urls import include, path
 # from marketplace import urls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('base.urls')),
-    path('seller/', include('seller.urls')),
-    path('marketplace/', include('marketplace.urls'))
-
+    path("admin/", admin.site.urls),
+    path("", include("base.urls")),
+    path("seller/", include("seller.urls")),
+    path("marketplace/", include("marketplace.urls")),
 ]

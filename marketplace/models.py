@@ -9,6 +9,5 @@ class Marketplace(models.Model):
     email = models.EmailField(max_length=200)
     sellers = models.ManyToManyField(Seller)
 
-
     def __str__(self):
         return self.name

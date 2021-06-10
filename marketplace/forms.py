@@ -4,7 +4,6 @@ from marketplace.models import Marketplace
 
 
 class MarketplaceForm(ModelForm):
-
     class Meta:
         model = Marketplace
-        fields = ['name', 'document', 'email', 'sellers']
+        fields = ["name", "document", "email", "sellers"]

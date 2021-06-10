@@ -4,19 +4,18 @@ from seller.models import Seller, Address, Contact
 
 
 class SellerForm(ModelForm):
-    
     class Meta:
         model = Seller
-        fields = ['name', 'document', 'phone_number', 'email']
+        fields = ["name", "document", "phone_number", "email"]
+
 
 class AddressForm(ModelForm):
-    
     class Meta:
         model = Address
-        fields = ['number', 'street', 'district', 'city', 'state', 'zip_code']
-        
+        fields = ["number", "street", "district", "city", "state", "zip_code"]
+
+
 class ContactForm(ModelForm):
-    
     class Meta:
         model = Contact
-        fields = ['number']
+        fields = ["number"]
