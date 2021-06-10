@@ -1,50 +1,50 @@
-from seller.forms import SellerForm, AddressForm
-from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.views.generic.list import ListView
+from django.shortcuts import render
 
-from django.urls import reverse
+from seller.forms import SellerForm
 
-from seller.models import Seller, Address
-
-class SellerListView(ListView):
-    model = Seller
+from seller.models import Seller
 
 
-# class SellerCreateView(CreateView):
-#     model = Seller
-#     fields = ['name', 'document', 'phone_number', 'email']
+def seller_list(request):
+    seller_list = Seller.objects.all()
+    context = {
+        'seller_list' : seller_list,
+    }
     
-    
-#     def get_success_url(self):
-#         return reverse('seller_list')
+    return render(request, 'seller/seller_list.html', context=context)
 
 
-class SellerCreateView(CreateView):
-    form_class = SellerForm
-    template_name = 'seller/seller_form.html'
+def seller_create(request):
+    seller_list = Seller.objects.all()
+    context = {
+        'seller_list' : seller_list,
+    }
     
-    
-    def get_success_url(self):
-        return reverse('seller_list')
-
-class SellerUpdateView(UpdateView):
-    model = Seller
-    fields = ['name', 'document', 'phone_number', 'email']
-    
-    
-    def get_success_url(self):
-        return reverse('seller_list')
-    
-
-class SellerDeleteView(DeleteView):
-    # specify the model you want to use
-    model = Seller
-     
-    def get_success_url(self):
-        return reverse('seller_list')
+    return render(request, 'seller/seller_list.html', context=context)
 
 
-class SellerDetailView(DetailView):
+def seller_update(request):
+    seller_list = Seller.objects.all()
+    context = {
+        'seller_list' : seller_list,
+    }
     
-    model = Seller
+    return render(request, 'seller/seller_list.html', context=context)
+
+
+def seller_delete(request):
+    seller_list = Seller.objects.all()
+    context = {
+        'seller_list' : seller_list,
+    }
+    
+    return render(request, 'seller/seller_list.html', context=context)
+
+
+def seller_detail(request):
+    seller_list = Seller.objects.all()
+    context = {
+        'seller_list' : seller_list,
+    }
+    
+    return render(request, 'seller/seller_list.html', context=context)
