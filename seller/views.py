@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from seller.forms import SellerForm
 
@@ -15,12 +15,17 @@ def seller_list(request):
 
 
 def seller_create(request):
-    seller_list = Seller.objects.all()
+    form = SellerForm(request.POST or None)
+    
+    if form.is_valid():
+        form.save()
+        return redirect('seller_list')
+        
     context = {
-        'seller_list' : seller_list,
+        'form' : form,
     }
     
-    return render(request, 'seller/seller_list.html', context=context)
+    return render(request, 'seller/seller_form.html', context=context)
 
 
 def seller_update(request):
