@@ -6,7 +6,11 @@
     <h4 class="mb-3">Create new seller</h4>
    
     <form method="post">{% csrf_token %}
-        {{ form.as_p }}
+
+        {{ seller_form.as_p }}
+        {{ address_form.as_p }}
+        {{ contact_form.as_p }}
+
         <input type="submit" value="Save">
     </form>
 

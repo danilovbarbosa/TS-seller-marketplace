@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 
-from seller.forms import SellerForm
+from seller.forms import SellerForm, AddressForm, ContactForm
 
 from seller.models import Seller
 
@@ -15,14 +15,18 @@ def seller_list(request):
 
 
 def seller_create(request):
-    form = SellerForm(request.POST or None)
-    
-    if form.is_valid():
-        form.save()
+    seller_form = SellerForm(request.POST or None)
+    address_form = AddressForm(request.POST or None)
+    contact_form = ContactForm(request.POST or None)
+
+    if seller_form.is_valid() :
+        seller_form.save()
         return redirect('seller_list')
         
     context = {
-        'form' : form,
+        'seller_form' : seller_form,
+        'address_form' : address_form,
+        'contact_form' : contact_form,
     }
     
     return render(request, 'seller/seller_form.html', context=context)
