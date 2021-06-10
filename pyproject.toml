@@ -9,6 +9,8 @@ python = "^3.9"
 flake8 = "^3.9.2"
 Django = "^3.2.4"
 psycopg2-binary = "^2.8.6"
+pytest = "^6.2.4"
+coverage = "^5.5"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.5.7"
