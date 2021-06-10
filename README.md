@@ -4,7 +4,7 @@
 
 Desafio: sistema gerenciamento de seller e marketplace com teste unitário e verificação de cobertura de testes.
 
-Construído sobre uma plataforma Python 3, Poetry, Pytest, Python-decouple, Docker, Docker-Compose, Postgresql
+Construído sobre uma plataforma Python 3, Poetry, Pytest, Flake8, Python-decouple, Docker, Docker-Compose, Postgresql
 
 ## Instruções instalação e execução com docker-compose:
 
@@ -36,6 +36,12 @@ poetry install
 
 ```sh
 poetry shell
+```
+
+- Execute o flake8:
+
+```sh
+flake8 .
 ```
 
 ## Autor(es):
