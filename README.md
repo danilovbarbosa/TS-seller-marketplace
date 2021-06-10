@@ -38,5 +38,5 @@ poetry install
 poetry shell
 ```
 
-## Autor:
+## Autor(es):
 - Danilo e Jeff.
