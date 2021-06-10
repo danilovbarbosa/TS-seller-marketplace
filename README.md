@@ -10,7 +10,7 @@ Construído sobre uma plataforma Python 3, Poetry, Pytest, Flake8, Python-decoup
 
 - Configure as opções de: migrations, user_admin, pytest (com ou sem relatório) e runserver, em:
 
-> scripts/run.sh
+> *[scripts/run.sh](https://github.com/danilovbarbosa/TS-seller-marketplace/blob/main/scripts/run.sh)*
 
 - No terminal execute:
 
