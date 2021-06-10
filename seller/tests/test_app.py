@@ -1,5 +1,8 @@
 import pytest
 
+from django.urls import reverse
+from django.test import Client
+
 from seller.models import Seller, Address, Contact
 
 pytestmark = pytest.mark.django_db
@@ -17,15 +20,27 @@ class TestSeller:
 
         assert len_before < len_after
     
-    
-    def test_um_novo_seller_com_todos_atributos_entao_deve_estar_no_bd_2(self):
-        len_before = Seller.objects.all().count()
-        Seller.objects.create(name="test", document="test", phone_number="test", email="test@test.com")
+    def test_quando_hover_requisicao_get_em_view_seller_list_entao_status_code__deve_ser_200(self):
+        url = reverse('seller_list')
         
-        len_after = Seller.objects.all().count()
+        client = Client()
+        response = client.get(url)
+        
+        assert response.status_code == 200
+    
+    def test_quando_hover_requisicao_get_em_view_seller_update_entao_content__deve_ter_uma_string_pertencente_ao_user(self):
+        # TODO: inserir valor do id automaticamente, de acordo com o que estiver presente na tabela.
+        seller = Seller.objects.create(name="test", document="test", phone_number="test", email="test@test.com")
+        Address.objects.create(number="test", street="test", district="test", city="test", state="test", zip_code="test", seller=seller)
+        Contact.objects.create(number="test", seller=seller)
 
-        assert len_before < len_after
-
+        url = reverse('seller_update', kwargs={'id': seller.id})
+        
+        client = Client()
+        response = client.get(url)
+        
+        assert response.status_code == 200
+        assert 'test' in str(response.content)
 
 @pytest.mark.django_db
 class TestAddress:
