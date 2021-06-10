@@ -1,41 +1,73 @@
-from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.views.generic.list import ListView
+from django.shortcuts import (get_object_or_404,
+                              render,
+                              redirect,
+                              HttpResponseRedirect)
 
-from django.urls import reverse
+from marketplace.forms import MarketplaceForm
 
-from marketplace.models import Marketplace 
+from marketplace.models import Marketplace
+ 
 
-class MarketplaceListView(ListView):
-    model = Marketplace
+def marketplace_list(request):
+    marketplace_list = Marketplace.objects.all()
+    context = {
+        'marketplace_list' : marketplace_list,
+    }
+    
+    return render(request, 'marketplace/marketplace_list.html', context=context)
 
 
-class MarketplaceCreateView(CreateView):
-    model = Marketplace
-    fields = ['name', 'document', 'phone_number', 'email', 'sellers']
+def marketplace_create(request):
+    marketplace_form = MarketplaceForm(request.POST or None)
+
+
+    if marketplace_form.is_valid() :
+        marketplace_form.save()
+        return redirect('marketplace_list')
+
+    context = {
+        'marketplace_form' : marketplace_form,
+    }
+    
+    return render(request, 'marketplace/marketplace_form.html', context=context)
+
+
+def marketplace_update(request, id):
+ 
+    marketplace_obj = get_object_or_404(Marketplace, id = id)
+    marketplace_form = MarketplaceForm(request.POST or None, instance = marketplace_obj)
     
     
-    def get_success_url(self):
-        return reverse('marketplace_list')
+    if marketplace_form.is_valid():
+        marketplace_form.save()
+        
+        return redirect('marketplace_list')
+ 
+    context = {
+        'marketplace_form' : marketplace_form,
+    }    
     
+    return render(request, 'marketplace/marketplace_form.html', context=context)
 
-class MarketplaceUpdateView(UpdateView):
-    model = Marketplace
-    fields = ['name', 'document', 'phone_number', 'email']
-    
-    
-    def get_success_url(self):
-        return reverse('marketplace_list')
-    
+def marketplace_delete(request, id):
+    context = {}
 
-class MarketplaceDeleteView(DeleteView):
-    # specify the model you want to use
-    model = Marketplace
-     
-    def get_success_url(self):
-        return reverse('marketplace_list')
+    obj = get_object_or_404(Marketplace, id = id)
+    
+    if request.method == "GET":
+        obj.delete()
+
+        return redirect('marketplace_list')
+    
+    return render(request, 'marketplace/marketplace_list.html', context=context)
 
 
-class MarketplaceDetailView(DetailView):
+def marketplace_detail(request, id):
+    marketplace_obj = get_object_or_404(Marketplace, id = id)
+    marketplace_form = MarketplaceForm(request.POST or None, instance = marketplace_obj)
     
-    model = Marketplace
+    context = {
+        'marketplace_form' : marketplace_form,
+    }    
+    
+    return render(request, 'marketplace/marketplace_form.html', context=context)
