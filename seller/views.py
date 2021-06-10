@@ -1,4 +1,7 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import (get_object_or_404,
+                              render,
+                              redirect,
+                              HttpResponseRedirect)
 
 from seller.forms import SellerForm, AddressForm, ContactForm
 
@@ -31,7 +34,7 @@ def seller_create(request):
         new_contact.save()
 
         return redirect('seller_list')
-        
+
     context = {
         'seller_form' : seller_form,
         'address_form' : address_form,
@@ -41,7 +44,7 @@ def seller_create(request):
     return render(request, 'seller/seller_form.html', context=context)
 
 
-def seller_update(request):
+def seller_update(request, id):
     seller_list = Seller.objects.all()
     context = {
         'seller_list' : seller_list,
@@ -50,11 +53,17 @@ def seller_update(request):
     return render(request, 'seller/seller_list.html', context=context)
 
 
-def seller_delete(request):
-    seller_list = Seller.objects.all()
-    context = {
-        'seller_list' : seller_list,
-    }
+def seller_delete(request, id):
+    context = {}
+    print("oi: "+ id)
+    obj = get_object_or_404(Seller, id = id)
+    
+    if request.method == "GET":
+            # delete object
+        obj.delete()
+        # after deleting redirect to
+        # home page
+        return redirect('seller_list')
     
     return render(request, 'seller/seller_list.html', context=context)
 
