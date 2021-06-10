@@ -47,9 +47,6 @@
                     <td>{{ seller.document }}</td>
                     <td>{{ seller.phone_number }}</td>
                     <td>{{ seller.email }}</td>
-                    <td>{{ seller.addresses }}</td>
-                    <td>{{ seller.contacts }}</td>
-
                     <td><a type="button" class="btn btn-primary" href="{% url 'seller_update' seller.id %}" >Update</a></td>
                     <td><a type="button" class="btn btn-danger" href="{% url 'seller_delete' seller.id %}" >Delete</a></td>
                 </tr>

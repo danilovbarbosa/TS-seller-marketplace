@@ -83,10 +83,22 @@ def seller_delete(request, id):
     return render(request, 'seller/seller_list.html', context=context)
 
 
-def seller_detail(request):
-    seller_list = Seller.objects.all()
+def seller_detail(request, id):
+    seller_obj = get_object_or_404(Seller, id = id)
+    seller_form = SellerForm(request.POST or None, instance = seller_obj)
+    
+    address_obj = Address.objects.get(seller=id)
+    address_form = AddressForm(request.POST or None, instance = address_obj)
+
+    contact_obj = Contact.objects.get(seller=id)
+    contact_form = ContactForm(request.POST or None, instance = contact_obj)
+    
     context = {
-        'seller_list' : seller_list,
-    }
+        'seller_form' : seller_form,
+        'address_form' : address_form,
+        'contact_form' : contact_form,
+    }    
+    
+    return render(request, 'seller/seller_form.html', context=context)
     
     return render(request, 'seller/seller_list.html', context=context)
