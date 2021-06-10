@@ -13,10 +13,10 @@ class AddressForm(ModelForm):
     
     class Meta:
         model = Address
-        fields = ['number', 'street', 'district', 'city', 'state', 'zip_code', 'seller']
+        fields = ['number', 'street', 'district', 'city', 'state', 'zip_code']
         
 class ContactForm(ModelForm):
     
     class Meta:
         model = Contact
-        fields = ['number', 'seller']
+        fields = ['number']

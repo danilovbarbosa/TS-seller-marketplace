@@ -20,7 +20,16 @@ def seller_create(request):
     contact_form = ContactForm(request.POST or None)
 
     if seller_form.is_valid() :
-        seller_form.save()
+        new_seller = seller_form.save()
+        
+        new_address = address_form.save()
+        new_address.seller = new_seller
+        new_address.save()
+        
+        new_contact = contact_form.save()
+        new_contact.seller = new_seller
+        new_contact.save()
+
         return redirect('seller_list')
         
     context = {
