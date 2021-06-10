@@ -28,8 +28,8 @@ services:
             - 8000:8000
         command: bash -f ./scripts/run.sh
         volumes: 
-            - .:/var/wwww
-        working_dir: /var/wwww
+            - .:/var/www
+        working_dir: /var/www
         depends_on: 
             bd: 
                 condition: service_healthy
