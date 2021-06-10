@@ -1,5 +1,5 @@
-from seller.models import Seller
 from django.db import models
+from seller.models import Seller
 
 # Create your models here.
 class Marketplace(models.Model):
